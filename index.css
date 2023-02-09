@@ -1,0 +1,87 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+    font-weight: 700;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+    background-color: black;
+    background-size: cover;
+    height: 100vh;
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 30px;
+    width: 100%
+}
+
+#counter-left, #counter-right{
+    margin-top: 20px;
+    display: inline-block; 
+    background-color: grey;
+    padding: 10px;
+    border-radius: 20px 0px 0px 20px;
+}
+
+#counter-right{
+    border-radius: 0px 20px 20px 0px;
+}
+
+#plus{
+    font-size: 25px;
+    margin-top: 30px;
+    color: gray;
+    border: none;
+    border-radius: 10px;
+    width: 30px;
+    height: 30px;
+    align-items: center;
+}
+
+#plus:hover{
+    cursor: pointer;
+}
+
+.potatoAnimation, .potatoAnimationII, .potatoAnimationIII{
+    background-image: url(./img/Potato.png);
+    background-size: contain;
+    background-position: center;
+    width: 107px;
+    height: 100px;
+    animation: potatoAnimation 1s;
+}
+
+.potatoAnimation{
+    align-items: center;
+}
+
+.potatoAnimationII{
+    position: relative;
+}
+
+.potatoAnimationIII{
+    position: relative;
+}
+
+.margin-potato{
+    margin-top: 100px;
+}
+
+@keyframes potatoAnimation{
+    0%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
