@@ -13,6 +13,20 @@ body{
     height: 100vh;
 }
 
+/* background image */
+body::after {
+    content: "";
+    background: url(./img/Potato-Background.jpg);
+    background-size: cover;
+    opacity: var(--bg-opacity);
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+  }
+
 .container{
     display: flex;
     align-items: center;
@@ -35,14 +49,22 @@ body{
 }
 
 #plus{
-    font-size: 25px;
-    margin-top: 30px;
+    margin-top: 32px;
     color: gray;
     border: none;
     border-radius: 10px;
     width: 30px;
     height: 30px;
     align-items: center;
+}
+
+i{
+    color: black;
+    font-size: 25px;
+}
+
+i:hover{
+    color: red;
 }
 
 #plus:hover{
