@@ -1,10 +1,12 @@
 let counter = parseInt(localStorage.getItem("potatoCounter")) || 0
+let peelerCounter = parseInt(localStorage.getItem("peelerCounter")) || 0
 let potatoAnimationRandomizer = 0
 const potatoContainer = document.getElementById("potatoContainer")
 const potatoContainerII = document.getElementById("potatoContainerII")
 const potatoContainerIII = document.getElementById("potatoContainerIII")
 const counterRight = document.getElementById("counter-right")
 const plus = document.getElementById("plus")
+const peelerPlus = document.getElementById("potato-peeler-plus")
 const bodyimage = document.querySelector("body")
 
 window.onload = ()=>{
@@ -46,6 +48,8 @@ function potatoAnimationIII(){
     ++potatoAnimationRandomizer 
 }
 
+//top click
+
 plus.addEventListener("click", () =>{
     counter++
     counterRight.innerHTML = counter
@@ -81,4 +85,28 @@ function updateBackgroundOpacity(counter) {
       
       bodyimage.style.setProperty('--bg-opacity', opacity);
     bodyimage.clientHeight;
+}
+
+//bottom peeler-click
+
+peelerPlus.addEventListener("click", () =>{
+if (counter >= 50){
+    counter -= 50
+    counterRight.innerHTML = counter
+    updateBackgroundOpacity(counter);
+    peelerCounter++
+    localStorage.setItem("peelerCounter", peelerCounter);
+} else {
+    return;
+}
+})
+
+if (peelerCounter >= 1){
+    setInterval(peelerPotatoes, 1000)
+}
+
+function peelerPotatoes() {
+    counter++
+    counterRight.innerHTML = counter;
+    localStorage.setItem("potatoCounter", counter);
 }
