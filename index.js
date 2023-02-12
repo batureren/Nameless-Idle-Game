@@ -5,6 +5,7 @@ const potatoContainer = document.getElementById("potatoContainer")
 const potatoContainerII = document.getElementById("potatoContainerII")
 const potatoContainerIII = document.getElementById("potatoContainerIII")
 const counterRight = document.getElementById("counter-right")
+const peelerHTML = document.getElementById("potato-peeler-html")
 const plus = document.getElementById("plus")
 const peelerPlus = document.getElementById("potato-peeler-plus")
 const bodyimage = document.querySelector("body")
@@ -90,23 +91,49 @@ function updateBackgroundOpacity(counter) {
 //bottom peeler-click
 
 peelerPlus.addEventListener("click", () =>{
-if (counter >= 50){
-    counter -= 50
+if (counter >= peelCost * peelerCounter){
+    counter -= peelCost * peelerCounter
     counterRight.innerHTML = counter
     updateBackgroundOpacity(counter);
     peelerCounter++
     localStorage.setItem("peelerCounter", peelerCounter);
+    peelerHTML.innerHTML = (`: ${(peelSec * peelerCounter).toFixed(2)}/sec & Upgrade Cost: ${peelCost * peelerCounter} Potatoes`)
+    peelerPotatoes()
 } else {
     return;
 }
 })
 
+let peelSec = 0.9
+let peelCost = 50
+let peelInterval = 900 // starting interval in milliseconds
+let lastPeelerCounter = 0
+
+function updatePeelInterval() {
+  // Calculate the new interval based on the peelerCounter
+  const newInterval = Math.floor(peelInterval / peelerCounter)
+  
+  // Clear the existing setInterval
+  clearInterval(peelTimer)
+  
+  // Set a new setInterval with the updated interval
+  peelTimer = setInterval(peelerPotatoes, newInterval)
+  
+  // Store the last peelerCounter value
+  lastPeelerCounter = peelerCounter
+}
+
 if (peelerCounter >= 1){
-    setInterval(peelerPotatoes, 1000)
+    // Start the setInterval
+    var peelTimer = setInterval(peelerPotatoes, peelInterval)
 }
 
 function peelerPotatoes() {
     counter++
     counterRight.innerHTML = counter;
     localStorage.setItem("potatoCounter", counter);
+    // Check if the peelerCounter has changed since the last update
+    if (peelerCounter !== lastPeelerCounter) {
+      updatePeelInterval()
+    }
 }
