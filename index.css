@@ -113,12 +113,15 @@ i:hover{
 }
 
 .fixed{
+    flex-direction: column;
     position: fixed;
     bottom: 70px;
     left: 50%;
     transform: translateX(-50%);
-    width: 100%;
+    width: 500px;
     word-wrap: break-word;
+    background-color:rgba(0, 0, 0, 0.839);
+    border-radius: 30px 30px 0px 0px;
 }
 
 .fixed-top{
@@ -132,10 +135,12 @@ i:hover{
     border-top: 5px solid rgba(0, 0, 0, 0.729);
 }
 
-#potato-peeler-plus{
+#potato-peeler-plus, #potato-masher-plus{
     width: 30px;
     height: 20px;
+    border-color: brown;
     border-radius: 5px;
+    margin-left: 5px;
 }
 
 .fa-coins{
@@ -145,4 +150,10 @@ i:hover{
 .fa-coins:hover{
     color: brown;
     cursor: pointer;
+}
+
+#upgradeII{
+    bottom: 40px;
+    border-radius: 0;
+    border-top: 1px solid brown;
 }

@@ -7,8 +7,10 @@ const potatoContainerII = document.getElementById("potatoContainerII")
 const potatoContainerIII = document.getElementById("potatoContainerIII")
 const counterRight = document.getElementById("counter-right")
 const peelerHTML = document.getElementById("potato-peeler-html")
+const masherHTML = document.getElementById("potato-masher-html")
 const plus = document.getElementById("plus")
 const peelerPlus = document.getElementById("potato-peeler-plus")
+const masherPlus = document.getElementById("potato-masher-plus")
 const bodyimage = document.querySelector("body")
 //! Variables Done
 
@@ -57,8 +59,7 @@ function potatoAnimationIII(){
 }
 //! Animation Done
 
-//top click
-
+//! Top Plus Button
 plus.addEventListener("click", () =>{
     counter++
     counterRight.innerHTML = counter
@@ -79,9 +80,11 @@ plus.addEventListener("click", () =>{
     const bgOpacity = getComputedStyle(bodyimage).getPropertyValue("--bg-opacity").trim();
     localStorage.setItem("bgOpacity", bgOpacity);
 });
+//! Top Plus Button Done
 
+//! Opacity Counter
 function updateBackgroundOpacity(counter) {
-    const counterOpacityMap = {0: 0.00, 20: 0.01,40: 0.02, 60: 0.03, 80: 0.04, 100: 0.05, 120: 0.06, 140: 0.07, 160: 0.08, 180: 0.09, 200: 0.10, 250: 0.11, 350: 0.12, 500: 0.13, 900: 0.14, 1400: 0.15, 2000: 0.16, 3000: 0.17, 5000: 0.18, 10000: 0.19, 50000: 0.20,
+    const counterOpacityMap = {0: 0.00, 20: 0.01,40: 0.02, 60: 0.03, 80: 0.04, 100: 0.05, 120: 0.06, 140: 0.07, 160: 0.08, 180: 0.09, 200: 0.10, 250: 0.11, 350: 0.12, 500: 0.13, 900: 0.14, 1400: 0.15, 2000: 0.16, 3000: 0.17, 5000: 0.18, 10000: 0.19, 50000: 0.20, 100000: 0.21, 200000: 0.22, 300000: 0.23, 600000: 0.24, 1000000: 0.25,
       };
       let opacity = 0.00;
       for (let i in counterOpacityMap) {
@@ -96,8 +99,9 @@ function updateBackgroundOpacity(counter) {
     bodyimage.clientHeight;
 }
 
-//bottom peeler-click
+//! Opacity Counter Done
 
+//! bottom peeler-click
 peelerPlus.addEventListener("click", () =>{
 if (counter >= 50 && counter >= peelCost * peelerCounter){
     if (peelerCounter === 0){
@@ -108,7 +112,7 @@ if (counter >= 50 && counter >= peelCost * peelerCounter){
     updateBackgroundOpacity(counter);
     peelerCounter++
     localStorage.setItem("peelerCounter", peelerCounter);
-    peelerHTML.innerHTML = (`: ${(peelSec * peelerCounter).toFixed(2)}/sec & Upgrade Cost: ${peelCost * peelerCounter} Potatoes`)
+    peelerHTML.innerHTML = (`: ${(peelSec * peelerCounter).toFixed(2)}/sec & Cost: ${peelCost * peelerCounter} Potatoes`)
     localStorage.setItem("peelerHTML", peelerHTML.innerHTML);
     peelerPotatoes()
 } else {
@@ -150,3 +154,5 @@ function peelerPotatoes() {
       updatePeelInterval()
     }
 }
+
+//! bottom peeler-click Done
