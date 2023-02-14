@@ -157,3 +157,7 @@ i:hover{
     border-radius: 0;
     border-top: 1px solid brown;
 }
+
+.display-none{
+    display: none;
+}
